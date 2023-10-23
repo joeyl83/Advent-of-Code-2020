@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     fstream my_file;
-    my_file.open("input2.txt", ios::in);
+    my_file.open("input.txt", ios::in);
 
     vector<int> a;
     string line;
