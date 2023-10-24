@@ -12,9 +12,10 @@ int main()
     std::cin.tie(NULL);
     std::cout.tie(NULL);
 
-    string range, letter, password;
+    string range = "", letter, password;
+    int validCount = 0;
 
-    while (std::cin >> range >> letter >> password) {
+    while ((std::cin >> range >> letter >> password)) {
         int lowerRange = 0;
         int upperRange = 0;
         string section = "";
@@ -31,6 +32,24 @@ int main()
             }
         }
         upperRange = stoi(section);
+
+        char key = letter[0];
+
+        int count = 0;
+        for (auto x : password)
+        {
+            if (x == key)
+            {
+                count++;
+            }
+        }
+
+        if (count >= lowerRange && count <= upperRange)
+        {
+            validCount++;
+        }
     }
+    std::cout << validCount;
+    std::cout << "test";
     return 0;
 }
