@@ -8,48 +8,38 @@ using namespace std;
 
 int main()
 {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(NULL);
-    std::cout.tie(NULL);
-
-    string range = "", letter, password;
     int validCount = 0;
 
-    while ((std::cin >> range >> letter >> password)) {
-        int lowerRange = 0;
-        int upperRange = 0;
-        string section = "";
-        for (auto x : range)
-        {
-            if (x == '-')
-            {
-                lowerRange = stoi(section);
-                section = "";
-            }
-            else 
-            {
-                section = section + x;
-            }
-        }
-        upperRange = stoi(section);
+    std::ifstream file("input.txt");
+    string line;
 
-        char key = letter[0];
+    while (std::getline(file, line)) 
+    {
+        string range;
+        string letterRaw;
+        string password;
+
+        int lowerRange, upperRange;
+        char dash;
+        stringstream ss(line);
+        ss >> lowerRange >> dash >> upperRange >> letterRaw >> password;
+
+        char letter = letterRaw[0];
 
         int count = 0;
         for (auto x : password)
         {
-            if (x == key)
+            if (x == letter)
             {
                 count++;
             }
         }
-
+        
         if (count >= lowerRange && count <= upperRange)
         {
             validCount++;
         }
     }
     std::cout << validCount;
-    std::cout << "test";
     return 0;
 }
