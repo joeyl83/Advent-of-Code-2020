@@ -8,26 +8,29 @@ using namespace std;
 
 int main()
 {
-    fstream file;
-    file.open("input.txt", ios::in);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    std::cout.tie(NULL);
 
-    vector<string> a;
-    string line;
+    string range, letter, password;
 
-    while (!file.eof())
-    {
-        file >> line;
-        a.push_back(line);
-    }
-    file.close();
-
-    for (int i = 0; i < a.size(); i++)
-    {
-        int j = 0;
-        stringstream ssin(a[i]);
-        while (ssin.good() && i < 3) 
+    while (std::cin >> range >> letter >> password) {
+        int lowerRange = 0;
+        int upperRange = 0;
+        string section = "";
+        for (auto x : range)
         {
-
+            if (x == '-')
+            {
+                lowerRange = stoi(section);
+                section = "";
+            }
+            else 
+            {
+                section = section + x;
+            }
         }
+        upperRange = stoi(section);
     }
+    return 0;
 }
