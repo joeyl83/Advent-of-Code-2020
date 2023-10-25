@@ -30,9 +30,16 @@ int main()
     {
         grid.push_back(line);
     }
-    cout << calculateTrees(3, 1, grid) << '\n';
 
-    cout << (calculateTrees(1, 1, grid) * calculateTrees(3, 1, grid) * calculateTrees(5, 1, grid) * calculateTrees(7, 1, grid) * calculateTrees(1, 2, grid));
+    long long result1 = calculateTrees(1, 1, grid);
+    long long result2 = calculateTrees(3, 1, grid);
+    long long result3 = calculateTrees(5, 1, grid);
+    long long result4 = calculateTrees(7, 1, grid);
+    long long result5 = calculateTrees(1, 2, grid);
+
+    long long finalResult = result1 * result2 * result3 * result4 * result5;
+
+    cout << finalResult;
 
     return 0;
 }
